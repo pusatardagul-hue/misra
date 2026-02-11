@@ -1,19 +1,47 @@
-body {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+    height: 100vh;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
+    overflow-x: hidden;
+}
+
+/* Arka plan yumuşak ışık efekti */
+body::before {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,0,120,0.3), transparent 70%);
+    top: -200px;
+    right: -200px;
+    filter: blur(120px);
+    z-index: -1;
+}
+
+.card {
+    width: 85%;
+    max-width: 900px;
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
     text-align: center;
+    animation: fadeUp 1s ease;
 }
 
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 50px 20px;
-}
-
-h1, h2, h3 {
+h1 {
+    font-size: 42px;
     margin-bottom: 20px;
 }
 
@@ -23,45 +51,38 @@ p {
     margin-bottom: 30px;
 }
 
-.photo {
-    width: 90%;
-    max-width: 500px;
+img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
     border-radius: 15px;
     margin-bottom: 25px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
 
-.btn {
+.button {
     display: inline-block;
-    padding: 12px 25px;
-    background: #ff4d6d;
+    padding: 12px 28px;
+    background: #ff2e63;
     color: white;
     text-decoration: none;
     border-radius: 30px;
     transition: 0.3s;
+    font-weight: bold;
 }
 
-.btn:hover {
-    background: #ff1e4d;
+.button:hover {
+    background: #ff004c;
     transform: scale(1.05);
 }
 
-/* Fade Animasyonu */
-.fade-in {
-    animation: fadeIn 1.5s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Slide Animasyonu */
-.slide-in {
-    animation: slideIn 1s ease;
-}
-
-@keyframes slideIn {
-    from { transform: translateX(50px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
